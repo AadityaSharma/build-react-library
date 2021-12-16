@@ -41,7 +41,13 @@ var step2 = (
 	</div>
 );
 
-setTimeout(() => {
-	alert('Re-rendering...');
-	TinyReact.render(step2, root);
-}, 4000);
+// setTimeout(() => {
+// 	alert('Re-rendering...');
+// 	TinyReact.render(step2, root);
+// }, 4000);
+
+const Heart = () => <span>yoyo&hearts;</span>;
+
+console.log(Heart);
+
+TinyReact.render(<Heart />, root);
