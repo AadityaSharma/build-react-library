@@ -25,3 +25,24 @@ console.log(step1);
 
 /** Steps 5, 6 */
 TinyReact.render(step1, root);
+
+var step2 = (
+	<div>
+		<h1 className='header'>Hello Tiny React!</h1>
+		<h2>(coding nirvana)</h2>
+		<div>
+			nested 1<div>nested</div>1.1
+		</div>
+		<h3>(OBSERVE: I said it!!!)</h3>
+		{2 == 1 && <div>Render this if 2==1</div>}
+		{2 == 2 && <div>{2}</div>}
+		<span>Something goes here...</span>
+		<button onClick={() => alert('Hi')}>Click Me!</button>
+		2,3
+	</div>
+);
+
+setTimeout(() => {
+	alert('Re-rendering...');
+	TinyReact.render(step2, root);
+}, 4000);
