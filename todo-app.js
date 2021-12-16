@@ -22,3 +22,6 @@ var step1 = (
 );
 
 console.log(step1);
+
+/** Steps 5, 6 */
+TinyReact.render(step1, root);
