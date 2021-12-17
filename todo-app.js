@@ -69,3 +69,8 @@ const Greeting = function (props) {
 };
 
 TinyReact.render(<Greeting message='Good Day!' />, root);
+
+setTimeout(() => {
+	alert('Re-rendering...');
+	TinyReact.render(<Greeting message='Good Night!' />, root);
+}, 4000);
