@@ -46,8 +46,26 @@ var step2 = (
 // 	TinyReact.render(step2, root);
 // }, 4000);
 
-const Heart = () => <span>yoyo&hearts;</span>;
+const Heart = (props) => <span style={props.style}>yoyo&hearts;</span>;
 
-console.log(Heart);
+// console.log(Heart);
 
-TinyReact.render(<Heart />, root);
+// TinyReact.render(<Heart style='color:green;' />, root);
+
+const Button = (props) => (
+	<button onClick={props.onClick}>{props.children}</button>
+);
+
+// Testing functional components, props, nested components
+const Greeting = function (props) {
+	return (
+		<div className='greeting'>
+			<h2>Welcome {props.message}</h2>
+			<Button onClick={() => alert('I love React!')}>
+				I <Heart /> React
+			</Button>
+		</div>
+	);
+};
+
+TinyReact.render(<Greeting message='Good Day!' />, root);
