@@ -21,10 +21,10 @@ var step1 = (
 	</div>
 );
 
-console.log(step1);
+// console.log(step1);
 
 /** Steps 5, 6 */
-TinyReact.render(step1, root);
+// TinyReact.render(step1, root);
 
 var step2 = (
 	<div>
@@ -104,4 +104,27 @@ class Alert extends TinyReact.Component {
 	}
 }
 
-TinyReact.render(<Alert message='Are you sure?' />, root);
+// TinyReact.render(<Alert message='Are you sure?' />, root);
+
+// Diffing / Reconciliation of two stateful components
+class Stateful extends TinyReact.Component {
+	constructor(props) {
+		super(props);
+		console.log(props);
+	}
+
+	render() {
+		return (
+			<div>
+				<h2>{this.props.title.toString()}</h2>
+				<button onClick={update}>Update</button>
+			</div>
+		);
+	}
+}
+
+TinyReact.render(<Stateful title='Task 1' />, root);
+
+function update() {
+	TinyReact.render(<Stateful title={new Date()} />, root);
+}
