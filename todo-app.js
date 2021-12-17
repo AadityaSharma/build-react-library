@@ -77,8 +77,10 @@ const Greeting = function (props) {
 
 // Stateful component
 class Alert extends TinyReact.Component {
-	constructor() {
-		super();
+	constructor(props) {
+		// As we pass props to the super(),
+		// these props will be available to the instance of this Alert class
+		super(props);
 		this.state = {};
 	}
 
@@ -86,10 +88,13 @@ class Alert extends TinyReact.Component {
 		return (
 			<div className='alert-container'>
 				<h2>Alert Title</h2>
-				<div>Alert Body</div>
+				<div>{this.props.message}</div>
+				<Button onClick={() => alert('I love React')}>
+					I <Heart /> React!!!!
+				</Button>
 			</div>
 		);
 	}
 }
 
-TinyReact.render(<Alert />, root);
+TinyReact.render(<Alert message='Are you sure?' />, root);
