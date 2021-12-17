@@ -128,3 +128,44 @@ TinyReact.render(<Stateful title='Task 1' />, root);
 function update() {
 	TinyReact.render(<Stateful title={new Date()} />, root);
 }
+
+class WishList extends TinyReact.Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			wish: { title: 'Default Wish!' },
+		};
+		this.update = this.update.bind(this);
+	}
+
+	update(e) {
+		let newValue = this.inputWishElem.value;
+		let wish = Object.assign({}, this.state.wish);
+		wish.title = newValue;
+		this.setState({
+			wish,
+		});
+	}
+
+	render() {
+		return (
+			<div>
+				<h2>Your wish list</h2>
+				<input
+					type='text'
+					ref={(elem) => {
+						this.inputWishElem = elem;
+					}}
+					placeholder="What's your wish?"
+				/>
+				<button onClick={this.update}>Update</button>
+
+				<div>
+					<b>Wish:</b> {this.state.wish.title}
+				</div>
+			</div>
+		);
+	}
+}
+
+TinyReact.render(<WishList />, root);
