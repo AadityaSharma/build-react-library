@@ -81,17 +81,24 @@ class Alert extends TinyReact.Component {
 		// As we pass props to the super(),
 		// these props will be available to the instance of this Alert class
 		super(props);
-		this.state = {};
+		this.state = {
+			title: 'Default Title',
+		};
+
+		// Binding the context to the instance of Alert
+		this.changeTitle = this.changeTitle.bind(this);
+	}
+
+	changeTitle() {
+		this.setState({ title: new Date().toString() });
 	}
 
 	render() {
 		return (
 			<div className='alert-container'>
-				<h2>Alert Title</h2>
+				<h2>{this.state.title}</h2>
 				<div>{this.props.message}</div>
-				<Button onClick={() => alert('I love React')}>
-					I <Heart /> React!!!!
-				</Button>
+				<Button onClick={this.changeTitle}>Change Title</Button>
 			</div>
 		);
 	}
